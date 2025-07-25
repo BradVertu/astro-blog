@@ -51,11 +51,6 @@ content:
           display: name
           search: [name, email]
  
-      - name: excerpt
-        label: Excerpt
-        type: text
-        description: A brief summary of the post
- 
       - name: featured_image
         label: Featured Image
         type: image
@@ -65,33 +60,10 @@ content:
         type: string
         list: true
  
-      - name: category
-        label: Category
-        type: select
-        required: false
-        options:
-          options:
-            - label: Technology
-              value: tech
-            - label: Lifestyle
-              value: lifestyle
-            - label: Business
-              value: business
-            - label: Travel
-              value: travel
-            - label: Food
-              value: food
- 
       - name: published
         label: Published
         type: boolean
         default: false
- 
-      - name: featured
-        label: Featured Post
-        type: boolean
-        default: false
-        description: Display this post prominently on the homepage
  
       - name: body
         label: Content
@@ -132,50 +104,22 @@ content:
         pattern:
           regex: '^[^\s@]+@[^\s@]+\.[^\s@]+$'
           message: 'Please enter a valid email address'
- 
-      - name: avatar
-        label: Profile Photo
-        type: image
- 
-      - name: bio
-        label: Biography
-        type: rich-text
-        description: A brief description about the author
+
  
       - name: title
         label: Job Title
         type: string
- 
-      - name: location
-        label: Location
-        type: string
- 
-      - name: website
-        label: Personal Website
-        type: string
-        pattern:
-          regex: '^https?://.+'
-          message: 'Please enter a valid URL starting with http:// or https://'
- 
-      - name: social_links
-        label: Social Media Links
-        type: object
-        fields:
-          - name: twitter
-            label: Twitter
-            type: string
- 
-          - name: linkedin
-            label: LinkedIn
-            type: string
- 
-          - name: github
-            label: GitHub
-            type: string
- 
-          - name: instagram
-            label: Instagram
-            type: string
+
+      - name: author
+        label: Author
+        type: reference
+        required: true
+        options:
+          collection: authors
+          value: slug
+          display: name
+          search: [name]
+
  
       - name: posts
         label: Posts by this Author
@@ -185,23 +129,13 @@ content:
         options:
           collection: posts
           value: slug
+          
           display: title
           search: [title]
           filter:
             field: author
             value: "{{slug}}"
- 
-      - name: active
-        label: Active Author
-        type: boolean
-        default: true
-        description: Inactive authors won't appear in author listings
- 
-      - name: featured_author
-        label: Featured Author
-        type: boolean
-        default: false
-        description: Display this author prominently on the team page
+
  
 # Reusable components
 components:
