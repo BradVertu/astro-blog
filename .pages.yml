@@ -2,6 +2,13 @@ media:
   input: public
   output: /
 content:
+  - name: authors
+    label: Authors
+    type: collection
+    path: src/content/authors
+    fields: 
+    - { name: firstname, label: firstname, type: string }
+    - { name: posts, label: posts, type: reference, options: { collections: posts, multiple: true }}
   - name: posts
     label: Posts
     type: collection
