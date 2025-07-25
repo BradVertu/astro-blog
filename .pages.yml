@@ -110,13 +110,12 @@ content:
         label: Job Title
         type: string
 
-      - name: author
-        label: Author
+      - name: posts
+        label: Posts
         type: reference
         required: true
         options:
-          collection: authors
-          value: slug
+          collection: posts
           display: name
           search: [name]
 
