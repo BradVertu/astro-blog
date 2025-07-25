@@ -8,7 +8,7 @@ content:
     path: src/content/authors
     fields: 
     - { name: firstname, label: firstname, type: string }
-    - { name: posts, label: posts, type: reference, options: { collections: posts, multiple: true }}
+    - { name: posts, label: posts, type: reference, options: { collections: posts, multiple: true, search: "title", value: "{id}", label: "{title}" }}
   - name: posts
     label: Posts
     type: collection
