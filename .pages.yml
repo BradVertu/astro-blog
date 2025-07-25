@@ -49,21 +49,12 @@ content:
           collection: authors
           value: slug
           display: name
-          search: [name, email]
- 
-      - name: featured_image
-        label: Featured Image
-        type: image
+          search: [name]
  
       - name: tags
         label: Tags
         type: string
         list: true
- 
-      - name: published
-        label: Published
-        type: boolean
-        default: false
  
       - name: body
         label: Content
@@ -77,7 +68,7 @@ content:
     path: content/authors
     filename: "{slug}"
     view:
-      fields: [name, email, active]
+      fields: [name]
       primary: name
       sort: [name]
       default:
@@ -96,19 +87,6 @@ content:
         pattern:
           regex: '^[a-z0-9-]+$'
           message: 'Slug must contain only lowercase letters, numbers, and hyphens'
- 
-      - name: email
-        label: Email Address
-        type: string
-        required: true
-        pattern:
-          regex: '^[^\s@]+@[^\s@]+\.[^\s@]+$'
-          message: 'Please enter a valid email address'
-
- 
-      - name: title
-        label: Job Title
-        type: string
 
       - name: posts
         label: Posts
@@ -118,22 +96,6 @@ content:
           collection: posts
           display: name
           search: [name]
-
- 
-      - name: posts
-        label: Posts by this Author
-        type: reference
-        list: true
-        description: This will show all posts assigned to this author
-        options:
-          collection: posts
-          value: slug
-          
-          display: title
-          search: [title]
-          filter:
-            field: author
-            value: "{{slug}}"
 
  
 # Reusable components
